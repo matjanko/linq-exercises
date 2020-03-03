@@ -1,6 +1,6 @@
 using System;
 
-namespace linq_exercises 
+namespace linq_exercises.src.main.domain
 {
     public enum Permit
     {
