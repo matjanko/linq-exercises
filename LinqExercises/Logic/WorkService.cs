@@ -5,7 +5,7 @@ using LinqExercises.Domain;
 
 namespace LinqExercises.Logic
 {
-    public class WorkService
+    public class WorkService : IWorkService
     {
         private readonly List<Holding> holdings;
 
