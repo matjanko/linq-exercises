@@ -2,8 +2,9 @@ using NUnit.Framework;
 
 namespace LinqExercises.Tests
 {
-    public class Tests
+    public class WorkServiceTest
     {
+
         [SetUp]
         public void Setup()
         {
