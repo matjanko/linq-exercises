@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using linq_exercises.src.domain;
+using LinqExercises.Domain;
 
-namespace linq_exercises.src.testdata
+namespace LinqExercises.Mock
 {
     public class UserData
     {

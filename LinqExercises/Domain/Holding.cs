@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace linq_exercises.src.domain
+namespace LinqExercises.Domain
 {
     public class Holding
     {

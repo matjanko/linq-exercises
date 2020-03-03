@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.0</TargetFramework>
-    <RootNamespace>linq_exercises</RootNamespace>
+    <RootNamespace>LinqExercises</RootNamespace>
   </PropertyGroup>
 
 </Project>

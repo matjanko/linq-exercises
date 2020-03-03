@@ -1,6 +1,6 @@
 using System;
 
-namespace linq_exercises.src.domain
+namespace LinqExercises.Domain
 {
     public class Account
     {
