@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using LinqExercises.Mock;
 using LinqExercises.Domain;
@@ -15,7 +16,10 @@ namespace LinqExercises.Logic
         }
 
         public long GetHoldingsWhereAreCompanies() {
-            return -1;
+            return (
+                from holding in holdings
+                where (holding.Companies != null && holding.Companies.Count > 0)
+                select holding).Count();
         }
 
         public List<String> GetHoldingNames() 
