@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace linq_exercises.src.main.domain 
+namespace linq_exercises.src.domain 
 {
     public class User 
     {

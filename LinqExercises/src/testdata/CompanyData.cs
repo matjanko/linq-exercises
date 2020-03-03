@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
-using linq_exercises.src.main.domain;
+using linq_exercises.src.domain;
 
-namespace linq_exercises.src.main.testdata
+namespace linq_exercises.src.testdata
 {
     public class CompanyData
     {

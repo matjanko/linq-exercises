@@ -1,6 +1,6 @@
 using System;
 
-namespace linq_exercises.src.main.domain
+namespace linq_exercises.src.domain
 {
     public enum AccountType 
     {
