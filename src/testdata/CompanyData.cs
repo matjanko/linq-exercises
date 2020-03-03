@@ -7,7 +7,7 @@ namespace linq_exercises.src.testdata
     {
         private readonly UserData userData = new UserData();
 
-        public List<Company> getCompanies() 
+        public List<Company> GetCompanies() 
         {
             var users = userData.GetUsers();
             var companies = new List<Company>();
