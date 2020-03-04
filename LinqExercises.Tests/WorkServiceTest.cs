@@ -158,5 +158,22 @@ namespace LinqExercises.Tests
             Assert.That(3.72m, Is.EqualTo(amount));
         }
 
+        [Test]
+        public void Should_Get_Total_CAsh_PLN_Correctly_Sum()
+        {
+            //given
+            List<Account> accounts = new List<Account>()
+            {
+                new Account("1234", AccountType.LO1, Currency.PLN, 150m),
+                new Account("2345", AccountType.LO1, Currency.USD, 50),
+                new Account("3456", AccountType.LO1, Currency.PLN, 300m),
+            };
+            //when
+            decimal result = workService.GetTotalCashInPLN(accounts);
+
+            //then
+            Assert.That(636m, Is.EqualTo(result));
+        }
+
     }
 }

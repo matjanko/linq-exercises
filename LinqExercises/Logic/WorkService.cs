@@ -117,7 +117,11 @@ namespace LinqExercises.Logic
 
         public decimal GetTotalCashInPLN(List<Account> accounts) 
         {
-            return -1;
+            var totalCash = (
+                from account in accounts
+                select account).Sum(a => ConvertAmountToPLN(a, 2));
+
+            return totalCash;
         }
 
         public List<String> GetOlderWoman(int age) 
