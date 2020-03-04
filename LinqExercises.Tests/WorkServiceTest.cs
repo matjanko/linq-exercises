@@ -119,5 +119,20 @@ namespace LinqExercises.Tests
             //then
             Assert.That(35, Is.EqualTo(result));
         }
+
+        [Test]
+        public void Should_Return_String_Of_All_Currencies()
+        {
+            //given
+            string expected = "CHF, EUR, PLN, USD";
+            
+            //when
+            string result = workService.GetAllCurrencies();
+
+            //then
+            Assert.That(expected, Is.EqualTo(result));
+        }
+
+        
     }
 }

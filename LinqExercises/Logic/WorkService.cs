@@ -93,7 +93,11 @@ namespace LinqExercises.Logic
 
         public string GetAllCurrencies() 
         {
-            return null;
+            var currencies = Enum.GetNames(typeof(Currency));
+            
+            Array.Sort(currencies, (x, y) => String.Compare(x, y));
+
+            return String.Join(", ", currencies);
         }
 
         public long GetWomanAmount() 
