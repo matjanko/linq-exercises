@@ -94,7 +94,7 @@ namespace LinqExercises.Logic
         public string GetAllCurrencies() 
         {
             var currencies = Enum.GetNames(typeof(Currency));
-            
+
             Array.Sort(currencies, (x, y) => String.Compare(x, y));
 
             return String.Join(", ", currencies);
@@ -102,12 +102,17 @@ namespace LinqExercises.Logic
 
         public long GetWomanAmount() 
         {
-            return -1;
+            var womanAmount = (
+                from user in GetUsers()
+                where user.Gender == Gender.Woman
+                select user).Count();
+
+            return womanAmount;
         }
 
         public decimal GetAccountAmountInPLN(Account account) 
         {
-            return -1;
+            return ConvertAmountToPLN(account, 3);
         }
 
         public decimal GetTotalCashInPLN(List<Account> accounts) 
@@ -210,6 +215,20 @@ namespace LinqExercises.Logic
             return (from user in GetUsers()
                     from account in user.Accounts
                     select account).AsEnumerable();
+        }
+
+        private decimal ConvertAmountToPLN(Account account, int round)
+        {
+            var amount = account.Currency switch 
+            {
+                Currency.PLN => account.Amount,
+                Currency.USD => Decimal.Multiply(account.Amount, 3.72m),
+                Currency.EUR => Decimal.Multiply(account.Amount, 4.23m),
+                Currency.CHF => Decimal.Multiply(account.Amount, 3.83m),
+                _ => 0,
+            };
+
+            return Decimal.Round(amount, round);
         }
     }
 }

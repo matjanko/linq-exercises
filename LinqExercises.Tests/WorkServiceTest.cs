@@ -1,6 +1,8 @@
 using NUnit.Framework;
 using LinqExercises.Logic;
 using System.Collections.Generic;
+using LinqExercises.Domain;
+using System;
 
 namespace LinqExercises.Tests
 {
@@ -133,6 +135,28 @@ namespace LinqExercises.Tests
             Assert.That(expected, Is.EqualTo(result));
         }
 
-        
+        [Test]
+        public void Should_Return_How_Many_Women_Are_In_Companies() 
+        {
+            //when
+            long result = workService.GetWomanAmount();
+
+            //then
+            Assert.That(4, Is.EqualTo(result));
+        }
+
+        [Test]
+        public void Should_Calculate_Amount_In_PLN()
+        {
+            //given
+            var account = new Account("1234", AccountType.LO1, Currency.USD, 1m);
+
+            //when
+            decimal amount = workService.GetAccountAmountInPLN(account);
+
+            //then
+            Assert.That(3.72m, Is.EqualTo(amount));
+        }
+
     }
 }
