@@ -175,5 +175,18 @@ namespace LinqExercises.Tests
             Assert.That(636m, Is.EqualTo(result));
         }
 
+        [Test]
+        public void Should_Return_Woman_Which_Are_Older_Than_50() 
+        {
+            //given
+            List<string> experted = new List<string>() { "Zosia" };
+            
+            //when
+            List<string> result = workService.GetOlderWoman(50);
+            
+            //then
+            Assert.That(experted, Is.EquivalentTo(result));
+        }
+
     }
 }

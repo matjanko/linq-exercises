@@ -124,9 +124,14 @@ namespace LinqExercises.Logic
             return totalCash;
         }
 
-        public List<String> GetOlderWoman(int age) 
+        public List<string> GetOlderWoman(int age) 
         {
-            return null;
+            var woman = (
+                from user in GetUsers()
+                where user.Gender == Gender.Woman && user.Age > age
+                select user.FirstName).ToList();
+            
+            return woman;
         }
 
         public User? GetRichestWoman() 
