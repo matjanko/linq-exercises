@@ -96,5 +96,28 @@ namespace LinqExercises.Tests
             //then
             Assert.That(expected, Is.EqualTo(result));
         }
+
+        [Test]
+        public void Should_Return_All_Companies_Names_As_String()
+        {
+            //given
+            string expected = "Fanta, Gerber, Lays, Mirinda, Nescafe, Nestea, Pepsi, Sprite";
+            
+            //when
+            string result = workService.GetAllCompaniesNamesAsString();
+
+            //then
+            Assert.That(expected, Is.EqualTo(result));
+        }
+
+        [Test]
+        public void Should_Return_How_Much_Account_Have_Users() 
+        {
+            //when
+            long result = workService.GetAllUserAccountsAmount();
+            
+            //then
+            Assert.That(35, Is.EqualTo(result));
+        }
     }
 }

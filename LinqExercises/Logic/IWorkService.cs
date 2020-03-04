@@ -17,8 +17,7 @@ namespace LinqExercises.Logic
         List<String> GetHoldingNames();
 
         ///
-        /// Zwraca nazwy wszystkich holdingów sklejone w jeden string i posortowane. 
-        /// String ma postać: (Coca-Cola, Nestle, Pepsico)
+        /// Zwraca nazwy wszystkich holdingów sklejone w jeden string. 
         ///
         string GetHoldingNamesAsString();
 
@@ -38,7 +37,8 @@ namespace LinqExercises.Logic
         List<String> GetAllCompaniesNames();
 
         ///
-        /// Zwraca listę firm jako string gdzie poszczególne firmy są oddzielone od siebie znakiem "+"
+        /// Zwraca listę firm jako string gdzie poszczególne firmy są 
+        /// oddzielone od siebie znakiem ", " i posortowane alfabetycznie.
         ///
         string GetAllCompaniesNamesAsString();
 

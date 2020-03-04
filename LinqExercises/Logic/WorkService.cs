@@ -75,14 +75,28 @@ namespace LinqExercises.Logic
             return companiesNames;
         }
 
-        public String GetAllCompaniesNamesAsString() 
+        public string GetAllCompaniesNamesAsString() 
         {
-            return null;
+            var companiesNames = (
+                from holding in holdings
+                from company in holding.Companies
+                select company.Name).ToArray();
+            
+            Array.Sort(companiesNames, (x, y) => String.Compare(x, y)); 
+            
+            return String.Join(", ", companiesNames);
         }
 
         public long GetAllUserAccountsAmount() 
         {
-            return -1;
+            var accountsAmount = (
+                from holding in holdings
+                from company in holding.Companies
+                from user in company.Users
+                from account in user.Accounts
+                select account).Count();
+            
+            return accountsAmount;
         }
 
         public string GetAllCurrencies() 
