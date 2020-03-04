@@ -47,8 +47,7 @@ namespace LinqExercises.Logic
         public long GetCompaniesAmount() 
         {
             var companiesAmount = (
-                from holding in holdings
-                from company in holding.Companies
+                from company in GetCompanies()
                 select company).Count();
             
             return companiesAmount;
@@ -57,9 +56,7 @@ namespace LinqExercises.Logic
         public long GetAllUserAmount() 
         {
             var userAmount = (
-                from holding in holdings
-                from company in holding.Companies
-                from user in company.Users
+                from user in GetUsers()
                 select user).Count();
 
             return userAmount;
@@ -68,8 +65,7 @@ namespace LinqExercises.Logic
         public List<string> GetAllCompaniesNames() 
         {
             var companiesNames = (
-                from holding in holdings
-                from company in holding.Companies
+                from company in GetCompanies()
                 select company.Name).ToList();
 
             return companiesNames;
@@ -78,8 +74,7 @@ namespace LinqExercises.Logic
         public string GetAllCompaniesNamesAsString() 
         {
             var companiesNames = (
-                from holding in holdings
-                from company in holding.Companies
+                from company in GetCompanies()
                 select company.Name).ToArray();
             
             Array.Sort(companiesNames, (x, y) => String.Compare(x, y)); 
@@ -90,10 +85,7 @@ namespace LinqExercises.Logic
         public long GetAllUserAccountsAmount() 
         {
             var accountsAmount = (
-                from holding in holdings
-                from company in holding.Companies
-                from user in company.Users
-                from account in user.Accounts
+                from account in GetAccounts()
                 select account).Count();
             
             return accountsAmount;
@@ -164,7 +156,7 @@ namespace LinqExercises.Logic
             return null;
         }
 
-        public HashSet<User> GetUsers() 
+        public HashSet<User> GetUsersSet() 
         {
             return null;
         }
@@ -193,6 +185,27 @@ namespace LinqExercises.Logic
         public Dictionary<Permit, List<User>> getUsersByTheyPermitsSorted()
         {
             throw new NotImplementedException();
+        }
+
+        private IEnumerable<Company> GetCompanies()
+        {
+            return (from holding in holdings
+                    from company in holding.Companies
+                    select company).AsEnumerable();
+        }
+
+        private IEnumerable<User> GetUsers()
+        {
+            return (from company in GetCompanies()
+                    from user in company.Users
+                    select user).AsEnumerable();
+        }
+
+        private IEnumerable<Account> GetAccounts()
+        {
+            return (from user in GetUsers()
+                    from account in user.Accounts
+                    select account).AsEnumerable();
         }
     }
 }

@@ -124,7 +124,7 @@ namespace LinqExercises.Logic
         /// Zwraca zbiór wszystkich użytkowników. 
         /// Jeżeli jest ich więcej niż 10 to obcina ich ilość do 10.
         ///
-        HashSet<User> GetUsers();
+        HashSet<User> GetUsersSet();
 
         ///
         /// Metoda wypisuje na ekranie wszystkich użytkowników (imie, nazwisko) posortowanych od z do a.
