@@ -142,5 +142,15 @@ namespace LinqExercises.Logic
         {
             return -1;
         }
+
+        public Dictionary<AccountType, Dictionary<User, decimal>> GetAccountUserMoneyInPLNMap()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Dictionary<Permit, List<User>> getUsersByTheyPermitsSorted()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
