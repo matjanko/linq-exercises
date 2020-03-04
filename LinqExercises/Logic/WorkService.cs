@@ -3,6 +3,7 @@ using System.Linq;
 using System.Collections.Generic;
 using LinqExercises.Mock;
 using LinqExercises.Domain;
+using System.Text;
 
 namespace LinqExercises.Logic
 {
@@ -15,36 +16,63 @@ namespace LinqExercises.Logic
             this.holdings = new HoldingData().GetHoldings();
         }
 
-        public long GetHoldingsWhereAreCompanies() {
-            return (
-                from holding in holdings
+        public long GetHoldingsWhereAreCompanies() 
+        {
+            var holdingsCount = (
+                from holding in holdings 
                 where (holding.Companies != null && holding.Companies.Count > 0)
                 select holding).Count();
+
+            return holdingsCount;
         }
 
-        public List<String> GetHoldingNames() 
+        public List<string> GetHoldingNames() 
         {
-            return null;
+            var holdingNames = (
+                from holding in holdings
+                select holding.Name.ToLower()).ToList();
+
+            return holdingNames;
         }
 
         public string GetHoldingNamesAsString() 
         {
-            return null;
+            var holdingNames = (
+                from holding in holdings
+                select holding.Name);
+
+            return String.Join(", ", holdingNames.ToArray());
         }
 
         public long GetCompaniesAmount() 
         {
-            return -1;
+            var companiesAmount = (
+                from holding in holdings
+                from company in holding.Companies
+                select company).Count();
+            
+            return companiesAmount;
         }
 
         public long GetAllUserAmount() 
         {
-            return -1;
+            var userAmount = (
+                from holding in holdings
+                from company in holding.Companies
+                from user in company.Users
+                select user).Count();
+
+            return userAmount;
         }
 
-        public List<String> GetAllCompaniesNames() 
+        public List<string> GetAllCompaniesNames() 
         {
-            return null;
+            var companiesNames = (
+                from holding in holdings
+                from company in holding.Companies
+                select company.Name).ToList();
+
+            return companiesNames;
         }
 
         public String GetAllCompaniesNamesAsString() 

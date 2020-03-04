@@ -21,6 +21,7 @@ namespace LinqExercises.Tests
         {
             //when
             long result = workService.GetHoldingsWhereAreCompanies();
+            
             //then
             Assert.That(3, Is.EqualTo(result));
         }
@@ -28,10 +29,19 @@ namespace LinqExercises.Tests
         [Test]
         public void Should_Return_Lower_Case_Name_Of_All_Holdings() 
         {
+            //given
+            List<string> expected = new List<string>() 
+            { 
+                "coca-cola",
+                "nestle",
+                "pepsico" 
+            };
+            
             //when
             List<string> result = workService.GetHoldingNames();
+            
             //then
-            Assert.That("[nestle, coca-cola, pepsico]", Is.EqualTo(result.ToString()));
+            Assert.That(expected, Is.EqualTo(result));
         }
 
         [Test]
@@ -39,8 +49,9 @@ namespace LinqExercises.Tests
         {
             //when
             string result = workService.GetHoldingNamesAsString();
+            
             //then
-            Assert.That("(Coca-Cola, Nestle, Pepsico)", Is.EqualTo(result));
+            Assert.That("Coca-cola, Nestle, Pepsico", Is.EqualTo(result));
         }
 
         [Test]
@@ -48,6 +59,7 @@ namespace LinqExercises.Tests
         {
             //when
             long result = workService.GetCompaniesAmount();
+            
             //then
             Assert.That(8, Is.EqualTo(result));
         }
@@ -57,6 +69,7 @@ namespace LinqExercises.Tests
         {
             //when
             long result = workService.GetAllUserAmount();
+            
             //then
             Assert.That(20, Is.EqualTo(result));
         }
@@ -64,9 +77,24 @@ namespace LinqExercises.Tests
         [Test]
         public void Should_Return_All_Companies_Name() 
         {
+            //given
+            List<string> expected = new List<string>() 
+            {
+                "Fanta",
+                "Sprite", 
+                "Nescafe", 
+                "Gerber", 
+                "Nestea", 
+                "Lays", 
+                "Pepsi", 
+                "Mirinda"
+            };
+            
+            //when
             List<string> result = workService.GetAllCompaniesNames();
-            Assert.That("[Nescafe, Gerber, Nestea, Fanta, Sprite, Lays, Pepsi, Mirinda]", 
-                Is.EqualTo(result.ToString()));
+            
+            //then
+            Assert.That(expected, Is.EqualTo(result));
         }
     }
 }
