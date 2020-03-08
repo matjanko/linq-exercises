@@ -136,7 +136,14 @@ namespace LinqExercises.Logic
 
         public User? GetRichestWoman() 
         {
-            return null;
+            var richestWoman = (
+                from user in GetUsers()
+                where user.Gender == Gender.Woman
+                let sumAccount = user.Accounts.Select(a => a.Amount).Sum()
+                orderby sumAccount descending
+                select user).FirstOrDefault();
+
+            return richestWoman;
         }
 
         public HashSet<String> GetFirstNCompany(int n) 

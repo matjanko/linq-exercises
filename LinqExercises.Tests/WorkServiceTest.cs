@@ -188,5 +188,16 @@ namespace LinqExercises.Tests
             Assert.That(experted, Is.EquivalentTo(result));
         }
 
+        [Test]
+        public void Should_Get_Richest_Woman()
+        {
+            //when
+            User? result = workService.GetRichestWoman();
+
+            //then
+            Assert.That("Zosia", Is.EqualTo(result.FirstName));
+            Assert.That("Psikuta", Is.EqualTo(result.LastName));
+        }
+
     }
 }
